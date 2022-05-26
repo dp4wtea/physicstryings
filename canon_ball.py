@@ -42,7 +42,7 @@ class Ball:
 class MainSimulation:
     def __init__(self, resolution, target_tps):
         self.running = False
-        self.ball = Ball(0, 600, 10, Velocity(10, -100))
+        self.ball = Ball(0, 600, 10, Velocity(10, -20))
         self.resolution = resolution
         self.target_tps = target_tps
 

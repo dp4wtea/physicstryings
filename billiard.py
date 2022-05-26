@@ -54,16 +54,16 @@ class MainSimulation:
 
         self.running = False
         self.resolution = resolution
-        self.physics_scene = PhysicScene(Vector2d(0, 0), Vector2d(0, 0), self.generate_starting_balls(10))
+        self.physics_scene = PhysicScene(Vector2d(0, 9.8), Vector2d(0, 0), self.generate_starting_balls(10))
 
     def generate_starting_balls(self, number_of_balls: int) -> list[Ball]:
         result = []
         for i in range(number_of_balls):
-            radius = randint(1, 40)
+            radius = randint(29, 40)
             x = randint(radius, self.resolution[0] - radius)
             y = randint(radius, self.resolution[0] - radius)
 
-            result.append(Ball(x, y, radius, Vector2d(randint(1, 89), randint(1, 89)), radius * 3))
+            result.append(Ball(x, y, radius, Vector2d(randint(1, 10), randint(1, 10)), radius * 3))
         return result
 
     def start_simulation(self):
