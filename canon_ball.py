@@ -70,7 +70,7 @@ class MainSimulation:
         pygame.display.update()
 
     def simulate(self, delta_t) -> None:
-        n = 20  # sub-steps
+        n = 40  # sub-steps
         for i in range(n):
             self.ball.x += self.ball.velocity.x * delta_t / n
 
