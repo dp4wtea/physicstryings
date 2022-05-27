@@ -1,6 +1,10 @@
 # physicstryings
 Python implementation of some 2d physics demos originally created by Matthias Müller on <a href = "https://matthias-research.github.io/pages/tenMinutePhysics/index.html">TenMinutePhysics </a>
-https://user-images.githubusercontent.com/81384821/170530379-3e731563-a224-4535-9115-3bc5d11de919.mov
+
+
+
+
+https://user-images.githubusercontent.com/81384821/170692438-81256aee-8b25-4849-8b9e-9f5288a93f67.mp4
 
 
 
