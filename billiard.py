@@ -142,5 +142,5 @@ class MainSimulation:
             self.physics_scene.balls[j].simulate(self.physics_scene.dt, self.physics_scene.gravity)
 
 
-a = MainSimulation((700, 700))
+a = MainSimulation((800, 800))
 a.start_simulation()
