@@ -51,3 +51,9 @@ class Vector2d:
     def clone(self):
         return Vector2d(self.x, self.y)
 
+    def perp(self):
+        """
+        returns perpendicular vector
+
+        """
+        return Vector2d(self.x, -1 * self.y)
