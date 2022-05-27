@@ -1,4 +1,4 @@
-# physicstryings
+#<h1> physicstryings</h1>
 Python implementation of some 2d physics demos originally created by Matthias Müller on <a href = "https://matthias-research.github.io/pages/tenMinutePhysics/index.html">TenMinutePhysics </a>
 
 
