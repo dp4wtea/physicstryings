@@ -4,8 +4,8 @@ https://user-images.githubusercontent.com/81384821/170530379-3e731563-a224-4535-
 
 
 
-    <h1>  Requirements: </h1>
-    <ul>
+<h1>  Requirements: </h1>
+<ul>
   <li>python 3.9+</li>
   <li>pygame</li>
  
