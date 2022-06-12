@@ -18,6 +18,45 @@ SOFTWARE.
 """
 
 
+def closest_point_on_segment(point: Vector2d, segment_first_point: Vector2d,
+                             segment_second_point: Vector2d) -> Vector2d:
+    ab = segment_second_point - segment_first_point
+    t = ab * ab
+    if t == 0:
+        return segment_first_point.clone()
+    t = max(0.0, min(1.0, (point.dot(ab) - segment_first_point.dot(ab)) / t))
+    return a + ab.scale_to_new_vector(t)
+
+
+class Segment:
+    def __init__(self, x1, y1, x2, y2, color):
+        self.first_point, self.second_point, self.color = Vector2d(x1, y1), Vector2d(x2, y2), color
+
+    def draw(self, screen):
+        pygame.draw.line(screen, self.color, (self.first_point.x, self.first_point.y),
+                         (self.second_point.x, self.second_point.y))
+
+    def get_closest_point_(self):
+        return closest_point_on_segment()
+
+
+class Flipper:
+    def __init__(self, radius, x, y, length, rest_angle, max_rotation,
+                 angular_velocity, restitution):
+        self.radius, self.cord, self.length, self.rest_angle, self.max_rotation, self.angular_velocity, self.restitution = radius, Vector2d(
+            x, y), length, rest_angle, max_rotation, angular_velocity, restitution
+
+    def on_clicked(self):
+        pass
+        # add angular velocity
+
+    def simulate(self, delta_t):
+        pass
+
+    def draw(self, screen):
+        pygame.draw.line()
+
+
 class Ball:
     def __init__(self, x: int, y: int, radius, velocity: Vector2d, mass: float):
         self.pos = Vector2d(x, y)
@@ -42,11 +81,16 @@ class PhysicScene:
     gravity: Vector2d
     worldSize: Vector2d
     balls: list[Ball]
+    segments: list[Segment]
+
     dt: float = 0.016666666666666666  # 1/60 seconds
     restitution: float = 1
 
     def add_ball(self, ball: Ball):
         self.balls.append(ball)
+
+    def add_segment(self, segment: Segment):
+        self.segments.append(segment)
 
 
 class MainSimulation:
@@ -79,16 +123,31 @@ class MainSimulation:
             self.check_events()
             # print(self.calculate_sum_energy())
 
+    def handle_collision_between_ball_and_segment(self, ball, segment):
+        pass
+
+    def handle_collision_between_ball_and_flipper(self, ball, flipper):
+        pass
+
     def check_events(self):
         for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RIGHT:
+                    pass
+                if event.key == pygame.K_LEFT:
+                    pass
+
             if event.type == pygame.QUIT:
                 self.running = False
                 break
 
     def draw(self, screen) -> None:
         screen.fill((255, 255, 255))  # clear screen
-        for obj in self.physics_scene.balls:
-            obj.draw(screen)
+        for ball in self.physics_scene.balls:
+            ball.draw(screen)
+        for segment in self.physics_scene.segments:
+            segment.draw(screen)
+
         pygame.display.update()
         screen.fill((255, 255, 255))
 
@@ -114,6 +173,9 @@ class MainSimulation:
         new_v2 = (m1 * v1 + m2 * v2 - m1 * (v2 - v1) * self.physics_scene.restitution) / (m1 + m2)
         ball1.velocity += vect_btw_balls.scale_to_new_vector(new_v1 - v1)
         ball2.velocity += vect_btw_balls.scale_to_new_vector(new_v2 - v2)
+
+    def handle_ball_segment_collision(self, segment: Segment, ball: Ball):
+        pass
 
     def handle_wall_collision(self, ball: Ball):
 
